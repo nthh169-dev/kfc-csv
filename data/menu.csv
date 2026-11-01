@@ -1,0 +1,13 @@
+id,name,category,description,price,old_price,badge,promo_code,image,featured
+1,"Gà Rán Giòn Cay 1111","Gà rán","Gà rán giòn rụm đậm vị cay nồng chuẩn vị KFC, lớp vỏ vàng ươm hấp dẫn.",45000,65000,"Bán chạy",GION10,images/chicken-crispy.svg,true
+2,"Gà Truyền Thống","Gà rán","Công thức 11 loại thảo mộc và gia vị bí truyền đậm đà, thịt gà mềm mọng nước.",45000,,"Chuẩn vị","",images/chicken-crispy.svg,false
+3,"Combo Gà Rán 1 Người","Combo","1 Miếng Gà Rán + 1 Khoai Tây Chiên (Vừa) + 1 Pepsi Tươi mát lạnh.",95000,115000,"Tiết kiệm 20K",COMBO95,images/combo-bucket.svg,true
+4,"Combo Gia Đình Thỏa Thích","Combo","6 Miếng Gà Rán + 2 Khoai Tây Chiên (Lớn) + 3 Pepsi Tươi giải nhiệt.",279000,335000,"Tiết kiệm 56K",FAMILY56,images/combo-bucket.svg,true
+5,"Burger Gà Zinger","Burger","Fillet gà giòn cay kẹp trong bánh mì mè thơm, xà lách tươi và sốt Mayo đậm đà.",65000,79000,"Deal Hot",ZINGER15,images/burger-zinger.svg,true
+6,"Burger Gà Phô Mai","Burger","Fillet gà giòn phủ sốt phô mai cheddar tan chảy béo ngậy cực đỉnh.",59000,,"Béo ngậy","",images/burger-zinger.svg,false
+7,"Khoai Tây Chiên (L)","Món ăn kèm","Khoai tây chiên vàng giòn rụm, vỏ mỏng ruột mịn bùi béo.",35000,,"Giòn rụm","",images/fries-golden.svg,false
+8,"Bắp Cải Trộn Coleslaw","Món ăn kèm","Bắp cải tươi giòn ngọt trộn sốt béo thanh nhẹ giải ngấy hoàn hảo.",22000,,"Thanh mát","",images/coleslaw.svg,false
+9,"Pepsi Tươi Cold","Đồ uống","Ly Pepsi tươi mát lạnh sảng khoái đánh tan cơn khát.",19000,,"Sảng khoái","",images/drink-cola.svg,false
+10,"Trà Đào Băng Tuyết","Đồ uống","Trà đào thơm ngát thanh nhiệt kết hợp đá tuyết mát lạnh sảng khoái.",29000,,"Thơm mát","",images/peach-tea.svg,false
+11,"Gà Viên Lắc Phô Mai","Gà rán","Từng viên gà không xương chiên giòn tan phủ đầy bột phô mai mặn béo vui miệng.",49000,,"Món mới","",images/chicken-popcorn.svg,false
+12,"Bánh Tart Trứng Nướng (2 Cái)","Món ăn kèm","Đế bánh ngàn lớp giòn xốp ôm trọn nhân kem trứng sữa nướng thơm lừng nóng hổi.",38000,,"Yêu thích","",images/egg-tart.svg,false

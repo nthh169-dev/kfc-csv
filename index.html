@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Thưởng thức gà rán giòn tan nóng hổi, combo tiết kiệm mỗi ngày và giao hàng nhanh trong 25 phút. Thực đơn cập nhật trực tiếp từ CSV.">
+  <title>KFC Gà Rán Giòn Nóng – Đặt Nhanh Giao Ngay</title>
+  <link rel="icon" type="image/png" href="images/KFC_logo-image.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="modules/payment/payment.css">
+  <!-- Thư viện PapaParse đọc dữ liệu CSV trực tiếp trên trình duyệt -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js" defer></script>
+  <script src="script.js" defer></script>
+  <script src="modules/payment/payment.js" defer></script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Chuyển đến nội dung chính</a>
+
+  <!-- HEADER DÍNH TRÊN CÙNG -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="brand-wordmark" aria-label="Trang chủ KFC Gà Rán Giòn Nóng">
+        <img src="images/KFC_logo-image.png" alt="Logo KFC" width="48" height="48" class="brand-logo">
+        <span class="wordmark-sub">Gà Giòn Nóng Hổi</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Điều hướng chính">
+        <ul class="nav-list">
+          <li><a href="#highlights" class="nav-link">Điểm nổi bật</a></li>
+          <li><a href="#promos" class="nav-link">Khuyến mãi</a></li>
+          <li><a href="#menu" class="nav-link">Thực đơn</a></li>
+          <li><a href="#order-cta" class="nav-link">Đặt nhanh</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="btn btn-primary cart-trigger" id="cart-open-btn" aria-label="Mở giỏ hàng" aria-haspopup="dialog" aria-controls="cart-drawer">
+          <svg class="icon-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M3 4H5L7.4 15.2C7.6 16.2 8.5 17 9.6 17H18.4C19.4 17 20.3 16.3 20.6 15.3L22 8H6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="9.5" cy="20.5" r="1.5" fill="currentColor"/>
+            <circle cx="17.5" cy="20.5" r="1.5" fill="currentColor"/>
+          </svg>
+          <span>Giỏ hàng</span>
+          <span class="cart-count" id="cart-count">0</span>
+        </button>
+
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Mở menu điều hướng" aria-expanded="false" aria-controls="mobile-nav">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 7H20M4 12H20M4 17H20" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menu di động -->
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Điều hướng di động" hidden>
+      <ul class="mobile-nav-list">
+        <li><a href="#highlights" class="mobile-nav-link">Điểm nổi bật</a></li>
+        <li><a href="#promos" class="mobile-nav-link">Khuyến mãi hôm nay</a></li>
+        <li><a href="#menu" class="mobile-nav-link">Thực đơn CSV</a></li>
+        <li><a href="#order-cta" class="mobile-nav-link">Đặt giao ngay</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <!-- PHẦN 1: HERO (NỀN KEM) -->
+    <section class="section section-cream hero-section" id="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="pill-tag">🔥 Nóng hổi vừa ra lò • Giao trong 25 phút</span>
+          <h1 class="hero-title">Giòn Rụm Từng Miếng, Đã Cơn Thèm Ngay!</h1>
+          <p class="hero-desc">
+            Lớp vỏ vàng giòn tan kết hợp thịt gà tươi mọng nước ướp thảo mộc đậm đà. Khám phá thực đơn và săn ngay combo ưu đãi tiết kiệm đến 56.000đ hôm nay.
+          </p>
+          <div class="hero-cta-group">
+            <a href="#menu" class="btn btn-primary">Đặt Gà Ngay</a>
+            <a href="#promos" class="btn btn-secondary">Xem Deal Hời</a>
+          </div>
+          <div class="hero-stats" aria-label="Thông số dịch vụ nổi bật">
+            <div class="stat-item">
+              <strong>4.9 ★</strong>
+              <span>12.000+ đánh giá</span>
+            </div>
+            <div class="stat-item">
+              <strong>25 Phút</strong>
+              <span>Giao nóng tận tay</span>
+            </div>
+            <div class="stat-item">
+              <strong>100%</strong>
+              <span>Gà tươi mỗi ngày</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <img
+            src="images/hero-bucket.svg"
+            alt="Minh họa xô gà rán giòn nóng hổi kèm khoai tây chiên vàng ươm"
+            width="480"
+            height="400"
+            class="hero-img"
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- PHẦN 2: ĐIỂM NỔI BẬT (NỀN TRẮNG) -->
+    <section class="section section-white" id="highlights">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Vì Sao Ai Cũng Mê Gà Giòn Của Chúng Tôi?</h2>
+          <p class="section-subtitle">Chế biến mới theo từng đơn hàng để giữ trọn độ nóng giòn hoàn hảo.</p>
+        </div>
+
+        <div class="features-grid">
+          <!-- Icon 1: Giòn tan -->
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2L14.6 7.4L20.5 8.3L16.2 12.4L17.3 18.3L12 15.5L6.7 18.3L7.8 12.4L3.5 8.3L9.4 7.4L12 2Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Vỏ Giòn Tan Chuẩn Vị</h3>
+            <p class="feature-text">Áo bột thủ công và chiên ở nhiệt độ chuẩn giúp vỏ giòn rụm mà không ngấy dầu.</p>
+          </article>
+
+          <!-- Icon 2: Giao nhanh -->
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path d="M13 2L4 14H12L11 22L20 10H12L13 2Z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Giao Siêu Tốc 25 Phút</h3>
+            <p class="feature-text">Túi giữ nhiệt chuyên dụng đảm bảo từng miếng gà và khoai tây vẫn nóng hổi khi mở hộp.</p>
+          </article>
+
+          <!-- Icon 3: Giá tốt -->
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path d="M20.6 13.4L13.4 20.6C12.6 21.4 11.4 21.4 10.6 20.6L3 13V3H13L20.6 10.6C21.4 11.4 21.4 12.6 20.6 13.4Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+                <circle cx="8" cy="8" r="1.6" fill="currentColor"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Combo Giá Siêu Hời</h3>
+            <p class="feature-text">Tiết kiệm đến 25% với các gói bữa trưa cá nhân, combo đôi và xô gà gia đình sung túc.</p>
+          </article>
+
+          <!-- Icon 4: Đánh giá sao -->
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5C22 12.27 18.6 15.36 13.45 20.03L12 21.35Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Nguyên Liệu Tươi Sạch</h3>
+            <p class="feature-text">Nguồn gà tươi kiểm định nghiêm ngặt mỗi sáng, rau xanh giòn mát và phô mai béo thơm.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHẦN 3: KHUYẾN MÃI NÓNG HỔI (NỀN KEM - ĐỌC TỪ CSV) -->
+    <section class="section section-cream" id="promos">
+      <div class="container">
+        <div class="section-header">
+          <span class="pill-tag pill-gold">⚡ Ưu đãi có hạn trong ngày</span>
+          <h2 class="section-title">Combo Khuyến Mãi Đang Hot</h2>
+          <p class="section-subtitle">Dữ liệu ưu đãi được đồng bộ trực tiếp từ cơ sở dữ liệu <code>data/menu.csv</code>.</p>
+        </div>
+
+        <div class="promo-grid" id="promo-grid" aria-live="polite">
+          <!-- Render động bằng JavaScript từ menu.csv -->
+        </div>
+      </div>
+    </section>
+
+    <!-- PHẦN 4: THỰC ĐƠN CHÍNH (NỀN TRẮNG - ĐỌC TỪ CSV) -->
+    <section class="section section-white" id="menu">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Thực Đơn Ngon Khó Cưỡng</h2>
+          <p class="section-subtitle">Chọn món yêu thích, lọc theo danh mục hoặc tìm nhanh món ăn hợp khẩu vị của bạn.</p>
+        </div>
+
+        <!-- Thanh công cụ lọc & tìm kiếm -->
+        <div class="menu-controls">
+          <div class="category-tabs" id="category-tabs" role="group" aria-label="Lọc món ăn theo danh mục">
+            <!-- Nút danh mục tự động sinh từ CSV -->
+          </div>
+
+          <div class="search-sort-bar">
+            <div class="search-box">
+              <label for="menu-search" class="sr-only">Tìm món ăn</label>
+              <input
+                type="search"
+                id="menu-search"
+                class="search-input"
+                placeholder="Tìm gà giòn, burger, tart trứng..."
+                autocomplete="off"
+              >
+            </div>
+
+            <div class="sort-box">
+              <label for="menu-sort" class="sr-only">Sắp xếp theo</label>
+              <select id="menu-sort" class="sort-select">
+                <option value="default">Sắp xếp: Nổi bật</option>
+                <option value="price-asc">Giá: Thấp đến cao</option>
+                <option value="price-desc">Giá: Cao đến thấp</option>
+                <option value="rating-desc">Đánh giá cao nhất</option>
+              </select>
+            </div>
+
+            <label class="csv-upload-btn btn btn-secondary" for="csv-file-input" title="Tải thử file CSV khác từ máy tính">
+              <span>📂 Nạp CSV</span>
+              <input type="file" id="csv-file-input" accept=".csv,text/csv" hidden>
+            </label>
+          </div>
+        </div>
+
+        <p class="csv-status" id="csv-status" role="status" aria-live="polite"></p>
+
+        <!-- Lưới thực đơn: 1 cột mobile -> 2 cột >=640px -> 4 cột >=1024px -->
+        <div class="menu-grid" id="menu-grid" aria-live="polite">
+          <!-- Render động bằng JavaScript từ menu.csv -->
+        </div>
+      </div>
+    </section>
+
+    <!-- PHẦN 5: CTA ĐẶT HÀNG NHANH (NỀN KEM) -->
+    <section class="section section-cream" id="order-cta">
+      <div class="container">
+        <div class="cta-banner">
+          <div class="cta-banner-text">
+            <h2 class="section-title">Đói Bụng Rồi? Gọi Gà Giòn Giao Tận Cửa!</h2>
+            <p>
+              Nhập mã <strong>FAMILY56</strong> hoặc chọn trực tiếp các gói Combo trong thực đơn để nhận ưu đãi giảm ngay đến 56.000đ. Miễn phí giao hàng cho đơn từ 150.000đ!
+            </p>
+          </div>
+          <div class="cta-banner-actions">
+            <a href="#menu" class="btn btn-primary">Chọn Món Ngay</a>
+            <a href="tel:19006886" class="btn btn-secondary">Gọi 1900 6886</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="brand-wordmark footer-wordmark">
+          <img src="images/KFC_logo-image.png" alt="Logo KFC" width="48" height="48" loading="lazy" class="brand-logo">
+          <span class="wordmark-sub">Gà Giòn Nóng Hổi</span>
+        </a>
+        <p class="footer-desc">
+          Landing Page tĩnh tốc độ cao sử dụng HTML5, CSS3, Vanilla JS và cơ sở dữ liệu CSV thông qua PapaParse.js.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <h3 class="footer-heading">Khám phá</h3>
+        <ul>
+          <li><a href="#highlights">Ưu điểm vượt trội</a></li>
+          <li><a href="#promos">Combo khuyến mãi</a></li>
+          <li><a href="#menu">Thực đơn đầy đủ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h3 class="footer-heading">Giờ mở cửa & Liên hệ</h3>
+        <ul>
+          <li>Mở cửa: 09:00 – 22:30 (Tất cả các ngày)</li>
+          <li>Tổng đài đặt món: <a href="tel:19006886">1900 6886</a></li>
+          <li>Địa chỉ: 123 Đại lộ Ẩm Thực, Quận 1, TP.HCM</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© 2026 Dự án học tập KFC CSV Landing Page. Thiết kế theo chuẩn DESIGN.md.</p>
+    </div>
+  </footer>
+
+  <!-- NGĂN KÉO GIỎ HÀNG (CART DRAWER) -->
+  <div class="cart-backdrop" id="cart-backdrop" hidden></div>
+  <aside class="cart-drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-title" hidden>
+    <div class="cart-header">
+      <h2 id="cart-title" class="cart-heading">Giỏ Hàng Của Bạn</h2>
+      <button type="button" class="icon-close-btn" id="cart-close-btn" aria-label="Đóng giỏ hàng">✕</button>
+    </div>
+
+    <div class="cart-body" id="cart-items">
+      <!-- Danh sách món trong giỏ -->
+    </div>
+
+    <div class="cart-footer">
+      <div class="promo-input-row">
+        <label for="promo-code-input" class="sr-only">Mã giảm giá</label>
+        <input type="text" id="promo-code-input" class="search-input" placeholder="Nhập mã (VD: FAMILY56)">
+        <button type="button" class="btn btn-secondary" id="apply-promo-btn">Áp dụng</button>
+      </div>
+      <p class="promo-feedback" id="promo-feedback" aria-live="polite"></p>
+
+      <div class="cart-summary">
+        <div class="summary-row">
+          <span>Tạm tính:</span>
+          <span id="cart-subtotal">0đ</span>
+        </div>
+        <div class="summary-row" id="discount-row" hidden>
+          <span>Giảm giá thêm:</span>
+          <span id="cart-discount">-0đ</span>
+        </div>
+        <div class="summary-row summary-total">
+          <span>Tổng thanh toán:</span>
+          <strong id="cart-total">0đ</strong>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-primary btn-block" id="checkout-btn">Đặt Giao Nóng Ngay</button>
+    </div>
+  </aside>
+
+  <!-- THÔNG BÁO NHỎ (TOAST) -->
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

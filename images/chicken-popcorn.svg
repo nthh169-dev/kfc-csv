@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" fill="none">
+  <rect width="400" height="300" rx="16" fill="#FFF6E5"/>
+  <circle cx="200" cy="155" r="102" fill="#FFE4B5"/>
+  <!-- Popcorn chicken bites -->
+  <circle cx="156" cy="122" r="24" fill="#E8831A" stroke="#1F1A17" stroke-width="4"/>
+  <circle cx="200" cy="110" r="26" fill="#F59B23" stroke="#1F1A17" stroke-width="4"/>
+  <circle cx="244" cy="124" r="24" fill="#E8831A" stroke="#1F1A17" stroke-width="4"/>
+  <circle cx="176" cy="142" r="22" fill="#FFD24C" stroke="#1F1A17" stroke-width="4"/>
+  <circle cx="222" cy="142" r="22" fill="#F5B301" stroke="#1F1A17" stroke-width="4"/>
+  <!-- Cup -->
+  <polygon points="128,144 272,144 252,242 148,242" fill="#E4002B" stroke="#1F1A17" stroke-width="4" stroke-linejoin="round"/>
+  <polygon points="184,144 216,144 212,242 188,242" fill="#FFFFFF"/>
+  <polygon points="128,144 272,144 252,242 148,242" fill="none" stroke="#1F1A17" stroke-width="4" stroke-linejoin="round"/>
+</svg>

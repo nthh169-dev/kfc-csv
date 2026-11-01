@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" fill="none">
+  <rect width="400" height="300" rx="16" fill="#FFF6E5"/>
+  <circle cx="200" cy="156" r="102" fill="#FFE4B5"/>
+  <!-- Straw -->
+  <path d="M204 94L218 46L246 46" stroke="#2E9E44" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Peach Tea Cup -->
+  <polygon points="142,98 258,98 240,244 160,244" fill="#F59B23" stroke="#1F1A17" stroke-width="4" stroke-linejoin="round"/>
+  <!-- Peach slices & ice -->
+  <rect x="166" y="122" width="24" height="24" rx="6" fill="#FFF6E5" opacity="0.85"/>
+  <rect x="206" y="132" width="24" height="24" rx="6" fill="#FFF6E5" opacity="0.85"/>
+  <path d="M168 184C168 168 196 168 196 184Z" fill="#FFD24C" stroke="#1F1A17" stroke-width="3"/>
+  <path d="M202 204C202 188 230 188 230 204Z" fill="#FFD24C" stroke="#1F1A17" stroke-width="3"/>
+  <!-- Rim -->
+  <rect x="132" y="90" width="136" height="14" rx="7" fill="#FFFFFF" stroke="#1F1A17" stroke-width="4"/>
+</svg>

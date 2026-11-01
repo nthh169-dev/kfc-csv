@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" fill="none">
+  <rect width="400" height="300" rx="16" fill="#FFF6E5"/>
+  <circle cx="200" cy="154" r="104" fill="#FFE4B5"/>
+  <!-- Top bun -->
+  <path d="M104 138C104 86 146 66 200 66C254 66 296 86 296 138H104Z" fill="#F59B23" stroke="#1F1A17" stroke-width="4" stroke-linejoin="round"/>
+  <!-- Sesame seeds -->
+  <ellipse cx="166" cy="96" rx="7" ry="4" fill="#FFF6E5"/>
+  <ellipse cx="200" cy="88" rx="7" ry="4" fill="#FFF6E5"/>
+  <ellipse cx="234" cy="98" rx="7" ry="4" fill="#FFF6E5"/>
+  <ellipse cx="184" cy="112" rx="6" ry="3.5" fill="#FFF6E5"/>
+  <ellipse cx="218" cy="114" rx="6" ry="3.5" fill="#FFF6E5"/>
+  <!-- Lettuce wave -->
+  <path d="M96 146Q116 134 136 146T176 146T216 146T256 146T304 146" stroke="#2E9E44" stroke-width="12" stroke-linecap="round" fill="none"/>
+  <!-- Cheese slice -->
+  <polygon points="108,154 292,154 276,174 244,158 186,176 154,158 112,168" fill="#FFD24C" stroke="#1F1A17" stroke-width="3" stroke-linejoin="round"/>
+  <!-- Crispy chicken fillet -->
+  <rect x="98" y="164" width="204" height="34" rx="17" fill="#D96B12" stroke="#1F1A17" stroke-width="4"/>
+  <circle cx="136" cy="181" r="5" fill="#F5B301"/>
+  <circle cx="198" cy="180" r="6" fill="#F5B301"/>
+  <circle cx="256" cy="182" r="5" fill="#F5B301"/>
+  <!-- Bottom bun -->
+  <rect x="108" y="200" width="184" height="32" rx="14" fill="#F59B23" stroke="#1F1A17" stroke-width="4"/>
+</svg>

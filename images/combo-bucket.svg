@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" fill="none">
+  <rect width="400" height="300" rx="16" fill="#FFF6E5"/>
+  <circle cx="200" cy="152" r="108" fill="#FFE4B5"/>
+  <!-- Drink cup behind -->
+  <polygon points="256,88 322,88 312,226 266,226" fill="#E4002B" stroke="#1F1A17" stroke-width="4" stroke-linejoin="round"/>
+  <rect x="250" y="78" width="78" height="14" rx="7" fill="#FFFFFF" stroke="#1F1A17" stroke-width="4"/>
+  <path d="M289 78L298 48L316 48" stroke="#1F1A17" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Chicken pieces -->
+  <ellipse cx="155" cy="112" rx="34" ry="28" fill="#E8831A" stroke="#1F1A17" stroke-width="4"/>
+  <ellipse cx="205" cy="108" rx="36" ry="30" fill="#F59B23" stroke="#1F1A17" stroke-width="4"/>
+  <!-- Bucket -->
+  <polygon points="104,124 256,124 236,244 124,244" fill="#E4002B" stroke="#1F1A17" stroke-width="4" stroke-linejoin="round"/>
+  <polygon points="142,124 166,124 160,244 140,244" fill="#FFFFFF"/>
+  <polygon points="194,124 218,124 220,244 200,244" fill="#FFFFFF"/>
+  <polygon points="104,124 256,124 236,244 124,244" fill="none" stroke="#1F1A17" stroke-width="4" stroke-linejoin="round"/>
+  <rect x="96" y="114" width="168" height="16" rx="8" fill="#FFFFFF" stroke="#1F1A17" stroke-width="4"/>
+  <!-- Fries box front right -->
+  <polygon points="228,166 296,166 286,244 238,244" fill="#F5B301" stroke="#1F1A17" stroke-width="4" stroke-linejoin="round"/>
+  <rect x="240" y="138" width="12" height="34" rx="4" fill="#FFD24C" stroke="#1F1A17" stroke-width="3"/>
+  <rect x="256" y="132" width="12" height="40" rx="4" fill="#FFD24C" stroke="#1F1A17" stroke-width="3"/>
+  <rect x="272" y="140" width="12" height="32" rx="4" fill="#FFD24C" stroke="#1F1A17" stroke-width="3"/>
+</svg>

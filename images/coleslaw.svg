@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" fill="none">
+  <rect width="400" height="300" rx="16" fill="#FFF6E5"/>
+  <circle cx="200" cy="156" r="102" fill="#FFE4B5"/>
+  <!-- Salad mound -->
+  <path d="M118 168C118 118 154 96 200 96C246 96 282 118 282 168H118Z" fill="#FFFDF9" stroke="#1F1A17" stroke-width="4"/>
+  <!-- Shredded cabbage & carrot -->
+  <path d="M148 138Q166 122 184 138" stroke="#2E9E44" stroke-width="6" stroke-linecap="round"/>
+  <path d="M196 126Q216 112 236 128" stroke="#2E9E44" stroke-width="6" stroke-linecap="round"/>
+  <path d="M168 152Q192 138 214 152" stroke="#F59B23" stroke-width="6" stroke-linecap="round"/>
+  <path d="M222 148Q242 136 256 150" stroke="#2E9E44" stroke-width="5" stroke-linecap="round"/>
+  <path d="M140 154Q154 144 166 156" stroke="#F59B23" stroke-width="5" stroke-linecap="round"/>
+  <!-- Bowl -->
+  <path d="M106 166H294L274 236H126L106 166Z" fill="#E4002B" stroke="#1F1A17" stroke-width="4" stroke-linejoin="round"/>
+  <rect x="148" y="194" width="104" height="12" rx="6" fill="#FFFFFF"/>
+</svg>

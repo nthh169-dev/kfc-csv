@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" fill="none">
+  <rect width="400" height="300" rx="16" fill="#FFF6E5"/>
+  <circle cx="200" cy="156" r="102" fill="#FFE4B5"/>
+  <!-- Straw -->
+  <path d="M200 92L214 44L244 44" stroke="#E4002B" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Cup body -->
+  <polygon points="142,98 258,98 242,246 158,246" fill="#E4002B" stroke="#1F1A17" stroke-width="4" stroke-linejoin="round"/>
+  <rect x="149" y="152" width="102" height="36" fill="#FFFFFF"/>
+  <polygon points="142,98 258,98 242,246 158,246" fill="none" stroke="#1F1A17" stroke-width="4" stroke-linejoin="round"/>
+  <!-- Dome lid -->
+  <path d="M136 98C136 74 264 74 264 98H136Z" fill="#FFFFFF" stroke="#1F1A17" stroke-width="4"/>
+  <rect x="132" y="94" width="136" height="12" rx="6" fill="#FFFFFF" stroke="#1F1A17" stroke-width="4"/>
+  <!-- Sparkles -->
+  <circle cx="176" cy="170" r="6" fill="#F5B301"/>
+  <circle cx="200" cy="170" r="8" fill="#E4002B"/>
+  <circle cx="224" cy="170" r="6" fill="#F5B301"/>
+</svg>

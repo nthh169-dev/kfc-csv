@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" fill="none">
+  <rect width="400" height="300" rx="16" fill="#FFF6E5"/>
+  <circle cx="200" cy="155" r="105" fill="#FFE4B5"/>
+  <!-- Drumstick 1 -->
+  <g transform="rotate(-24 175 150)">
+    <rect x="164" y="58" width="22" height="56" rx="10" fill="#FFFFFF" stroke="#1F1A17" stroke-width="4"/>
+    <circle cx="163" cy="58" r="10" fill="#FFFFFF" stroke="#1F1A17" stroke-width="4"/>
+    <circle cx="187" cy="58" r="10" fill="#FFFFFF" stroke="#1F1A17" stroke-width="4"/>
+    <ellipse cx="175" cy="152" rx="46" ry="62" fill="#E8831A" stroke="#1F1A17" stroke-width="4"/>
+    <circle cx="158" cy="134" r="8" fill="#F5B301"/>
+    <circle cx="188" cy="162" r="10" fill="#F5B301"/>
+    <path d="M152 168C162 178 178 178 188 168" stroke="#FFF6E5" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <!-- Drumstick 2 -->
+  <g transform="rotate(22 238 162)">
+    <rect x="228" y="72" width="20" height="52" rx="10" fill="#FFFFFF" stroke="#1F1A17" stroke-width="4"/>
+    <circle cx="227" cy="72" r="9" fill="#FFFFFF" stroke="#1F1A17" stroke-width="4"/>
+    <circle cx="249" cy="72" r="9" fill="#FFFFFF" stroke="#1F1A17" stroke-width="4"/>
+    <ellipse cx="238" cy="162" rx="42" ry="56" fill="#F59B23" stroke="#1F1A17" stroke-width="4"/>
+    <circle cx="226" cy="148" r="7" fill="#FFD24C"/>
+    <circle cx="250" cy="172" r="8" fill="#FFD24C"/>
+  </g>
+  <circle cx="96" cy="88" r="7" fill="#E4002B"/>
+  <circle cx="312" cy="96" r="9" fill="#F5B301"/>
+</svg>

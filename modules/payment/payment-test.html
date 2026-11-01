@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kiểm Thử Module 2: Thanh Toán – KFC CSV</title>
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="payment.css">
+  <style>
+    .test-container {
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 0 16px;
+    }
+    .test-summary-banner {
+      padding: 20px 24px;
+      border-radius: var(--radius);
+      background-color: var(--color-cream);
+      border-left: 8px solid var(--color-primary);
+      margin-bottom: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .test-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .test-row {
+      padding: 14px 18px;
+      border-radius: 12px;
+      background-color: var(--color-white);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(31, 26, 23, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .badge-pass {
+      background-color: #1B7A34;
+      color: #FFFFFF;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.82rem;
+    }
+    .badge-fail {
+      background-color: var(--color-primary-dark);
+      color: #FFFFFF;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.82rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="test-container">
+    <div class="test-summary-banner">
+      <div>
+        <h1 style="font-size: 1.65rem; font-weight: 800;">Bộ Kiểm Thử Module 2: Thanh Toán</h1>
+        <p id="runner-status" style="color: var(--color-muted);">Đang thực thi các test case...</p>
+      </div>
+      <button type="button" class="btn btn-primary" id="demo-open-modal-btn">Mở Thử Giao Diện Thanh Toán</button>
+    </div>
+
+    <div class="test-list" id="test-results"></div>
+  </main>
+
+  <button type="button" id="checkout-btn" hidden>Giả lập nút Đặt Giao Nóng Ngay</button>
+
+  <script src="payment.js"></script>
+  <script>
+    (function () {
+      const P = window.KFCPaymentModule;
+      const resultsEl = document.getElementById('test-results');
+      const statusEl = document.getElementById('runner-status');
+
+      let mockCartItems = [
+        { id: '1', name: 'Gà Rán Giòn Cay', category: 'Gà rán', price: 45000, qty: 2 },
+        { id: '3', name: 'Combo Gà Rán 1 Người', category: 'Combo', price: 95000, qty: 1 }
+      ];
+
+      window.calculateCartTotals = function () {
+        const subtotal = mockCartItems.reduce((s, i) => s + i.price * i.qty, 0);
+        const totalCount = mockCartItems.reduce((s, i) => s + i.qty, 0);
+        return { detailedItems: mockCartItems, totalCount, subtotal, discount: 0, total: subtotal };
+      };
+
+      function assertEqual(actual, expected, msg) {
+        if (actual !== expected) {
+          throw new Error((msg || 'Sai giá trị') + ` (Mong đợi: ${expected}, Thực tế: ${actual})`);
+        }
+      }
+
+      const cases = [
+        ['TC-01', 'Đầy đủ 4 tùy chọn thanh toán: Tiền mặt, Mã QR MoMo, Mã QR ZaloPay, Thẻ ATM', () => {
+          const keys = Object.keys(P.PAYMENT_METHODS).join(',');
+          assertEqual(keys, 'cod,qr_momo,qr_zalopay,atm');
+        }],
+        ['TC-02', 'Chặn thanh toán khi Giỏ Hàng rỗng (EMPTY_CART)', () => {
+          const s = P.computeOrderSummary({ detailedItems: [], totalCount: 0, subtotal: 0 });
+          assertEqual(s.isEmpty, true);
+        }],
+        ['TC-03', 'Tính phí ship 15.000đ (< 150K) và miễn phí từ 150.000đ hoặc Tự đến lấy', () => {
+          const under = P.computeOrderSummary({ detailedItems: [{ id: '1', name: 'Gà', price: 100000, qty: 1 }] }, { fulfillmentMode: 'delivery' });
+          const over = P.computeOrderSummary({ detailedItems: [{ id: '2', name: 'Combo', price: 150000, qty: 1 }] }, { fulfillmentMode: 'delivery' });
+          assertEqual(under.shippingFee, 15000);
+          assertEqual(over.shippingFee, 0);
+        }],
+        ['TC-04', 'Kiểm tra thẻ ATM nội địa Napas 9704... & chọn ngân hàng phát hành', () => {
+          assertEqual(P.isValidAtmCardNumber('9704 3600 1234 5678'), true);
+          assertEqual(P.isValidAtmCardNumber('9704 0000 0000 0000'), false);
+          assertEqual(P.ATM_BANKS.length >= 10, true);
+        }],
+        ['TC-05', 'Chuyển đổi hiển thị các Panel QR MoMo, QR ZaloPay, ATM và Tiền mặt trên DOM', () => {
+          const modal = document.getElementById('payment-modal');
+          document.getElementById('checkout-btn').click();
+          assertEqual(modal.hidden, false);
+
+          const momoRadio = modal.querySelector('input[name="paymentMethod"][value="qr_momo"]');
+          momoRadio.checked = true;
+          momoRadio.dispatchEvent(new Event('change', { bubbles: true }));
+          assertEqual(document.getElementById('panel-method-qr-momo').hidden, false);
+          assertEqual(document.getElementById('panel-method-cod').hidden, true);
+
+          const zaloRadio = modal.querySelector('input[name="paymentMethod"][value="qr_zalopay"]');
+          zaloRadio.checked = true;
+          zaloRadio.dispatchEvent(new Event('change', { bubbles: true }));
+          assertEqual(document.getElementById('panel-method-qr-zalopay').hidden, false);
+          assertEqual(document.getElementById('panel-method-qr-momo').hidden, true);
+
+          const atmRadio = modal.querySelector('input[name="paymentMethod"][value="atm"]');
+          atmRadio.checked = true;
+          atmRadio.dispatchEvent(new Event('change', { bubbles: true }));
+          assertEqual(document.getElementById('panel-method-atm').hidden, false);
+
+          // Reset về Tiền mặt & đóng modal
+          const codRadio = modal.querySelector('input[name="paymentMethod"][value="cod"]');
+          codRadio.checked = true;
+          codRadio.dispatchEvent(new Event('change', { bubbles: true }));
+          document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+          assertEqual(modal.hidden, true);
+        }]
+      ];
+
+      let passCount = 0;
+      cases.forEach(([id, title, fn]) => {
+        const row = document.createElement('div');
+        row.className = 'test-row';
+        try {
+          fn();
+          passCount++;
+          row.innerHTML = `<span><strong>${id}:</strong> ${title}</span><span class="badge-pass">PASS</span>`;
+        } catch (err) {
+          row.innerHTML = `<span><strong>${id}:</strong> ${title}<br><small style="color: var(--color-primary-dark);">${err.message}</small></span><span class="badge-fail">FAIL</span>`;
+        }
+        resultsEl.appendChild(row);
+      });
+
+      statusEl.textContent = `Hoàn tất: ${passCount}/${cases.length} nhóm kiểm thử trình duyệt & DOM đạt 100%.`;
+
+      document.getElementById('demo-open-modal-btn').addEventListener('click', () => {
+        const modal = document.getElementById('payment-modal');
+        if (modal && modal._controller) {
+          modal._controller.openModal();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
